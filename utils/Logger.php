@@ -1,12 +1,8 @@
 <?php
 
-/**
- * Função utilitária para logging padronizado
- * @param string $message Mensagem a ser logada
- * @param string $level Nível do log (INFO, ERROR, DEBUG, etc)
- */
 function log_message($message, $level = 'INFO')
 {
-  $timestamp = date('Y-m-d H:i:s');
-  error_log("[$timestamp][$level] $message");
+  $date = date('Y-m-d H:i:s');
+  $log = "[$date][$level] $message\n";
+  file_put_contents(__DIR__ . '/../logs/app.log', $log, FILE_APPEND);
 }
